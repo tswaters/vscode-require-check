@@ -10,6 +10,11 @@ import {Definition, PublishDiagnosticsParams, DiagnosticSeverity, Position} from
 import findRequires from './find-requires'
 
 /**
+ * Cache this for later
+ */
+let _nativeModules = Object.keys((<any>process).binding('natives')).filter(id => !id.startsWith('internal/'))
+
+/**
  * Turns a vs-code uri into something vscode recognizes
  * @param {string} uri the path returned from TextDocument#uri
  * @returns {string} something that node recognizes
@@ -48,6 +53,10 @@ export function findRequireAtPosition (uri: string, contents: string, position: 
       if (position.line === item.range.end.line && position.character > item.range.end.character) { return false }
       return true
     })
+
+    // remove any core node modules
+    // node doesn't expose native-module so do the same stuffs
+    .filter (item => _nativeModules.indexOf(item.name) === -1)
 
     // send back the uri of the resolved document, point at the top
     .map(item => {
