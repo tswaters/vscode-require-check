@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Attach",
+      "type": "node",
+      "request": "attach",
+      "port": 6004,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/../client/out/server"
+    },
+    {
+      "name": "Run mocha",
+      "request": "launch",
+      "type": "node",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}",
+      "runtimeArgs": [
+          "--nolazy"
+      ],
+      "externalConsole": false,
+      "sourceMaps": true,
+      "runtimeExecutable": null,
+      "outDir": "${workspaceRoot}/../client/out/server/server/test"
+    }
+  ]
+}

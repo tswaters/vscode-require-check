@@ -1,0 +1,15 @@
+{
+  "name": "language-server-example",
+  "dependencies": {
+    "vscode-uri": "file:node_modules/vscode-uri/lib/index.d.ts"
+  },
+  "globalDependencies": {
+    "esprima": "registry:dt/esprima#2.1.0+20160830194246",
+    "esprima-walk": "registry:dt/esprima-walk#0.1.0+20160830150042",
+    "estree": "registry:dt/estree#0.0.0+20160317120654",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "node": "registry:env/node#6.0.0+20160901015934",
+    "promise": "file:typings/promise.d.ts",
+    "resolve-from": "registry:dt/resolve-from#0.0.0+20160401075620"
+  }
+}

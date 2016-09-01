@@ -1,0 +1,34 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Launch Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "${workspaceRoot}/../server/test/fixtures/folder-root",
+        "--extensionDevelopmentPath=${workspaceRoot}"
+      ],
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/out/client/src",
+      "preLaunchTask": "npm"
+    },
+    {
+      "name": "Launch Tests",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "${workspaceRoot}/../server/test/fixtures/folder-root",
+        "--extensionDevelopmentPath=${workspaceRoot}",
+        "--extensionTestsPath=${workspaceRoot}/out/client/test"
+      ],
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/out/client/test",
+      "preLaunchTask": "npm"
+    }
+  ]
+}

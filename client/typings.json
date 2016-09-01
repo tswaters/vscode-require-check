@@ -1,0 +1,12 @@
+{
+  "name": "vscode-require-check-client",
+  "dependencies": {},
+  "globalDependencies": {
+    "vscode-core": "file:node_modules/vscode/typings/core.d.ts",
+    "vscode-es6": "file:node_modules/vscode/typings/es6.d.ts",
+    "vscode-global": "file:node_modules/vscode/typings/global.d.ts",
+    "vscode-intl": "file:node_modules/vscode/typings/intl.d.ts",
+    "vscode-mocha": "file:node_modules/vscode/typings/mocha.d.ts",
+    "vscode-node": "file:node_modules/vscode/typings/node.d.ts"
+  }
+}

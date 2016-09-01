@@ -1,0 +1,23 @@
+{
+  "name": "vscode-require-check-types",
+  "description": "Common types used in the vscode-require-check extension.",
+  "version": "1.0.0",
+  "author": "Tyler Waters",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/tswaters/vscode-require-check/issues"
+  },
+  "homepage": "https://github.com/tswaters/vscode-require-check",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tswaters/vscode-require-check.git"
+  },  
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "vscode-jsonrpc": "^2.3.2-next.5",
+    "vscode-languageserver-types": "^1.0.2"
+  }
+}
