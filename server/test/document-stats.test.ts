@@ -6,27 +6,12 @@ import * as assert from 'assert'
 import Uri from 'vscode-uri'
 import * as documentStats from '../src/lib/document-stats'
 
-const basePath = process.env.VSCODE_CWD
+const basePath = process.cwd()
 const targetFile = require.resolve(path.join(basePath, 'test', 'fixtures', 'folder-root', 'test-es5.js'))
 const targetFileUri = Uri.file(targetFile).toString()
 const targetFileContents = fs.readFileSync(targetFile).toString()
 
 describe('lib/document-stats', () => {
-
-  describe('uriToPath', () => {
-    it('should return a valid path properly', () => {
-      const expected = path.dirname(targetFile)
-      const actual = documentStats.uriToPath(targetFileUri)
-      assert.equal(actual.toLowerCase(), expected.toLowerCase())
-    })
-  })
-
-  describe('pathToUri', () => {
-    it('should return a vscode-uri properly', () => {
-      const actual = documentStats.pathToUri(targetFile)
-      assert.equal(actual.toLowerCase(), targetFileUri.toLowerCase())
-    })
-  })
 
   describe('findRequireAtPosition', () => {
     it('should find the correct require at the given position', () => {

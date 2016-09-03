@@ -1,11 +1,9 @@
 
-import * as path from 'path'
-
 import resolveFrom = require('resolve-from')
 
-import Uri from 'vscode-uri'
-
 import {Definition, PublishDiagnosticsParams, DiagnosticSeverity, Position} from 'vscode-languageserver';
+
+import {uriToPath, pathToUri} from './util'
 
 import findRequires from './find-requires'
 
@@ -13,24 +11,6 @@ import findRequires from './find-requires'
  * Cache this for later
  */
 let _nativeModules = Object.keys((<any>process).binding('natives')).filter(id => !id.startsWith('internal/'))
-
-/**
- * Turns a vs-code uri into something vscode recognizes
- * @param {string} uri the path returned from TextDocument#uri
- * @returns {string} something that node recognizes
- */
-export function uriToPath (uri: string): string {
-  return path.dirname(Uri.parse(uri).fsPath)
-}
-
-/**
- * Turns a node uri into something vscode recognizes
- * @param {string} uri node-esque uri
- * @returns {string} something that vscode recognizes
- */
-export function pathToUri (uri: string): string {
-  return Uri.file(uri).toString()
-}
 
 /**
  * Finds all requires in a given code block that fall inside the provided position

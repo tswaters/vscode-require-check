@@ -4,6 +4,8 @@
 import Uri from 'vscode-uri'
 import {exec} from 'child_process'
 
+import {uriToFile, findNearestPackageJson} from './lib/util'
+
 import {
   createConnection,
   Command,
@@ -51,7 +53,9 @@ connection.onInitialize((params) => {
 // start the npm-install, and send back output notifications (client will pipe these to output window)
 connection.onRequest(InstallModuleRequestType, (params: InstallModuleParams) => {
 
-  const cwd = workspaceRoot
+  let cwd = findNearestPackageJson(workspaceRoot, params.fileName)
+  if (!cwd) { cwd = workspaceRoot }
+
   const moduleName = params.moduleName
   const save = `${params.save ? '--' + params.save : ''}`
 
@@ -70,6 +74,7 @@ connection.onRequest(InstallModuleRequestType, (params: InstallModuleParams) => 
 // wire up onCodeAction
 // this adds our `install` actions for modules that are not relatively loaded
 connection.onCodeAction((params) => {
+  let fileName = uriToFile(params.textDocument.uri)
   let moduleName = <string>params.context.diagnostics[0].code
 
   // if this is a relative require, don't show code actions to install module
@@ -80,9 +85,9 @@ connection.onCodeAction((params) => {
   moduleName = moduleName.split('/')[0]
 
   const result: Command[] = []
-  result.push(Command.create(`Install ${moduleName}`, 'moduleFixer.installFromNpm', moduleName, null))
-  result.push(Command.create(`Install ${moduleName} - save`, 'moduleFixer.installFromNpm', moduleName, 'save'))
-  result.push(Command.create(`Install ${moduleName} - save dev`, 'moduleFixer.installFromNpm', moduleName, 'save-dev'))
+  result.push(Command.create(`Install ${moduleName}`, 'moduleFixer.installFromNpm', fileName, moduleName, null))
+  result.push(Command.create(`Install ${moduleName} - save`, 'moduleFixer.installFromNpm', fileName, moduleName, 'save'))
+  result.push(Command.create(`Install ${moduleName} - save dev`, 'moduleFixer.installFromNpm', fileName, moduleName, 'save-dev'))
   return result
 })
 

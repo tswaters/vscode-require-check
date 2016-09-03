@@ -4,7 +4,7 @@ import * as path from 'path'
 import * as assert from 'assert'
 import parse from '../src/lib/find-requires'
 
-const basePath = process.env.VSCODE_CWD
+const basePath = process.cwd()
 const testEs5Contents = fs.readFileSync(path.join(basePath, 'test/fixtures/test-es5.js')).toString()
 const testEs6Contents = fs.readFileSync(path.join(basePath, 'test/fixtures/test-es6.js')).toString()
 

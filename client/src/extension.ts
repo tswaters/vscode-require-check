@@ -83,13 +83,13 @@ export function activate(context: ExtensionContext) {
    * @param {string} moduleName name of the module to install
    * @param {string} save blank (dont save), save, or save-dev
    */
-  function requestModuleInstall (moduleName: string, save: string) {
+  function requestModuleInstall (fileName: string, moduleName: string, save: string) {
 
     channel.clear()
 
     const requestType = InstallModuleRequestType
 
-    const requestParams: InstallModuleParams = {moduleName, save}
+    const requestParams: InstallModuleParams = {fileName, moduleName, save}
 
     // upon response, send a request to revalidate documents with this module
     const requestResponse: (res: InstallModuleResponse) => void = (res) => {

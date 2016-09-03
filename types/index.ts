@@ -25,7 +25,7 @@ export const NotifyRevalidate: NotificationType<NotificationParams> = {method: '
 /**
  * Defines paramterss for the revalidate request
  */
-export interface InstallModuleParams {moduleName: string, save: string}
+export interface InstallModuleParams {fileName: string, moduleName: string, save: string}
 export interface InstallModuleResponse {}
 export interface InstallModuleError {signal: string}
 export const InstallModuleRequestType: RequestType<InstallModuleParams, InstallModuleResponse, InstallModuleError> = {method: 'require-verify/install-module'};

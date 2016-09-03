@@ -2,7 +2,7 @@
   "name": "vscode-require-check",
   "displayName": "Require Check",
   "description": "Extension client for the vscode-require-check extension.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Tyler Waters",
   "publisher": "tswaters",
   "license": "MIT",
